@@ -1,0 +1,49 @@
+{
+  "name": "playwright-sample-shop",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "analyse:failures": "ts-node scripts/analyseFailures.ts",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "triage:list-tests": "ts-node scripts/listTestsByTag.ts",
+    "triage:failures": "ts-node scripts/summarizePlaywrightFailures.ts",
+    "test:check-env": "ts-node global-setup.ts",
+    "test": "playwright test",
+    "test:public-smoke": "playwright test --project=chromium --project=api --grep @smoke --grep-invert @auth",
+    "test:ui": "playwright test --project=chromium --project=firefox",
+    "test:api": "playwright test --project=api",
+    "test:smoke": "playwright test --grep @smoke",
+    "test:regression": "playwright test --grep @regression",
+    "test:headed": "playwright test --headed --project=chromium",
+    "test:report": "playwright show-report",
+    "test:auth-setup": "playwright test tests/setup/auth.setup.spec.ts --project=setup-auth",
+    "test:auth-smoke": "playwright test --project=api --project=chromium --project=chromium-auth --grep \"(?=.*@smoke)(?=.*@auth)\"",
+    "test:mocked": "playwright test tests/ui/regression/product-list-mocked.spec.ts --project=chromium",
+    "test:visual": "playwright test tests/ui/regression/visual-header.spec.ts --project=chromium",
+    "test:a11y": "playwright test tests/ui/regression/a11y-login-aria.spec.ts --project=chromium"
+  },
+  "keywords": [
+    "playwright",
+    "typescript",
+    "automation",
+    "e2e"
+  ],
+  "author": "Isha Bhatt",
+  "license": "ISC",
+  "description": "Playwright automation framework for a sample e-commerce application. UI, API, POM, environment-based config, test categorization, and more.",
+  "devDependencies": {
+    "@anthropic-ai/sdk": "^0.90.0",
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^25.5.0",
+    "dotenv": "^17.3.1",
+    "eslint": "^10.2.0",
+    "openai": "^6.34.0",
+    "prettier": "^3.8.3",
+    "typescript": "^6.0.2",
+    "typescript-eslint": "^8.58.1"
+  }
+}
